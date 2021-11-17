@@ -5,7 +5,7 @@
 # Version       : v1.0
 # Created Date  : 15/11/2021
 # Modified Date : 15/11/2021
-# Description   :
+# Description   : Using Python on my windows pc, scrape the Apache 2 page I created (or LYIT web page) and parse it minimally for later processing
 # Licensing     : Anup Jacob, LYIT
 # ----------------------------------
 
