@@ -17,28 +17,29 @@ import re
 # Open SSH connection to the device
 def ssh_connection(ip):
     try:
-        username = "L00163455"  # In an automation script read data from file
-        password = "V@@va123"  # never hard code
-        print("Establishing a connection...")
+        username = input("Enter the username : ")  # Username taken as input
+        password = input("Enter the password : ")  # Password taken as input
+
+        print("\nEstablishing a connection...")
         session = paramiko.SSHClient()
         session.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         session.connect(ip.rstrip("\n"), username=username, password=password)
         connection = session.invoke_shell()
         connection.send("ls > dir_contents.txt\n")  # unix command to list directory contents and save to file
         time.sleep(1)
-        vm_output = connection.recv(65535)
 
+        vm_output = connection.recv(65535)
         if re.search(b"% Invalid input", vm_output):
             print("There was an error on vm {}".format(ip))
         else:
-            print("Commands successfully executed on {}".format(ip))
+            print("\nCommands successfully executed on {}".format(ip))
+            print("\n---Connection established Successfully---")
 
-        session.close()
+        session.close()     # SSH session close
     except paramiko.AuthenticationException:
-        print("Authentication Error")
+        print("\nAuthentication Error")
+        print("Please try again!")
 
 
 if __name__ == '__main__':
-    ssh_connection("192.168.182.128")  # ip address of my VM, adjust to suit
-
-
+    ssh_connection("192.168.182.128")  # ip address of my Virtual Machine
