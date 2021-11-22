@@ -16,9 +16,7 @@ from datetime import datetime
 
 
 def port_scan():
-    """
-    """
-    # Clear the screen  #use clear if running in  *nix
+
     subprocess.call("cls", shell=True)
 
     # Ask for input
@@ -26,9 +24,9 @@ def port_scan():
     remoteserverip = socket.gethostbyname(remoteserver)
 
     # Print a nice banner with information on which host we are about to scan
-    print ("-" * 60)
-    print ("Please wait, scanning remote host", remoteserverip)
-    print ("-" * 60)
+    print("-" * 60)
+    print("Please wait, scanning remote host", remoteserverip)
+    print("-" * 60)
 
     # Check what time the scan started
     t1 = datetime.now()
@@ -51,7 +49,7 @@ def port_scan():
                     # print("Port name : HTML")
             sock.close()
     except KeyboardInterrupt:
-        print ("You pressed Ctrl+C")
+        print("You pressed Ctrl+C")
         sys.exit()
 
     except socket.gaierror:
@@ -69,7 +67,7 @@ def port_scan():
     total = t2 - t1
 
     # Printing the information to screen
-    print ('\nScanning Completed in: ', total)
+    print('\nScanning Completed in: ', total)
 
 
 if __name__ == "__main__":
